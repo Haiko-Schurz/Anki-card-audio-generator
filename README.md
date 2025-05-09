@@ -34,7 +34,36 @@ Have a look at the table to make sure all your columns are present and properly 
 
 In the "Import options" sectio select your "Note Type" Basic or Basic (and reversed card)
 
-In the "Filed mapping" section amke sure your Front, Back and Audio fields are selected based on the column names in your imprted CSV file. 
+In the "Field mapping" section amke sure your Front, Back and Audio fields are selected based on the column names in your imprted CSV file. 
 Finally Hit import
 
 ![image](https://github.com/user-attachments/assets/3798386c-7b3d-4972-8bc3-338885d66cde)
+
+At this point it is very possible that your Audio will not work, if it is not working follow these steps
+In Anki click "Browse" 
+![image](https://github.com/user-attachments/assets/787be4bc-0fc1-4b71-a8d2-0cab202dbfeb)
+
+Then click Fields... in to top right
+Then click Add on the right side and type "Audio" in the popup window and click OK then click save and close the window. 
+![image](https://github.com/user-attachments/assets/c769a233-4df8-4a06-8c77-91c4bb28fecc)
+![image](https://github.com/user-attachments/assets/7e59e661-eb55-4fc0-b592-f34d6769b999)
+
+Next click on Cards... which is next to the Fields.. button you clicked in the previous step.
+Here you now need to add the Audio field to either the "Front Template" or the "Back Template" depending on which side of the flashcard you want the audio to play.
+You can also select the card type, it depends on if you chose Basic or Basic (and reversed card) in the Import options when you imported the cards. You may want to use the Card type dropdown menu to add the Audio field to all your card types.
+Select aither Front Template or Back template then click Add Field at the bottom and select the Audio filed to add and hit OK. Then click save and close the Card Type window.
+
+![image](https://github.com/user-attachments/assets/0b089c94-54a6-4d12-8640-ccabb72e05b0)
+
+At this point it is possible that your Audio still does not play. If this is the case delete the card deck and import it again and choose all the same settings as decribed above, especially important to choose the same Note type in the Import options and have the columns assigned correctly in the Field mapping section.
+
+Now you can start studying your new flashcards! Have fun!!
+
+
+
+
+
+
+
+
+
