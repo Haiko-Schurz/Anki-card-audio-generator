@@ -15,13 +15,20 @@ Step 3: Double click the downloaded "anki_audio_generator.exe" program to run it
 ![image](https://github.com/user-attachments/assets/7b53b959-c383-4029-b865-5b55e2e0cb76)
 
 Step 4: Follow th esteps in the Anki Audio Generator program
-  Select CSV file-> this is the file you created in Step 2 above
-  Select Column with Text -> Here you select the column containing th etext you want to generate audio files for
-  Browse Folder -> Navigate to your ANKI "collection.media" folder you can do this by pasting ,%APPDATA%\Anki2, hit enter and click on "User 1" (or whatever your username is) and then click the collection.media folder and then click "Select folder".
-  Select Language -> Here you select the language you wan tto create audio files for (The same language as the words/sentances selected in the "Select Column with Text" section).
-  Select Voice -> Select hte voice you want 
-  Output file name -> Write the output file name here and make sure it end with ".csv". This output file is the file you will import into Anki and it is storted in the same place as the file you ceated in Step 2.
-  Finally hit Generate Audio and wait for the program to finish (A pop up window will let you know it is done) 
+
+Select CSV file-> this is the file you created in Step 2 above
+
+Select Column with Text -> Here you select the column containing th etext you want to generate audio files for.
+
+Browse Folder -> Navigate to your ANKI "collection.media" folder you can do this by pasting ,%APPDATA%\Anki2, hit enter and click on "User 1" (or whatever your username is) and then click the collection.media folder and then click "Select folder".
+![image](https://github.com/user-attachments/assets/9010fcf4-3d6c-491c-b683-6ccce0aae2de)
+
+
+Select Language -> Here you select the language you wan tto create audio files for (The same language as the words/sentances selected in the "Select Column with Text" section).
+Select Voice -> Select hte voice you want
+
+Output file name -> Write the output file name here and make sure it end with ".csv". This output file is the file you will import into Anki and it is storted in the same place as the file you ceated in Step 2.
+Finally hit Generate Audio and wait for the program to finish (A pop up window will let you know it is done) 
 
   Note you can browse the available languages here: https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support?tabs=tts#text-to-speech
   and you can listen to samples of the different voices here: https://speech.microsoft.com/portal/voicegallery
