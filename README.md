@@ -2,7 +2,8 @@
 Automatically create text to speach audio files for anki language cards
 
 How to use the software:
-Step 1: Download the software
+Step 1: Download the software here https://drive.google.com/file/d/1qIJPJPNV8JckpEE_ONjnf0E-V-Y37qaU/view?usp=drive_link
+Note it currently only works for windows.
 
 Step 2: Create a CSV file that has at least two columns, for exaxmple column 1 "Chinese" and column two "English" as shown in the example below, the order of the columns does not matter. 
 Note1: Make sure you save the CSV file as CSV UTF-8 comma delimited file in Excel. 
