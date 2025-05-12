@@ -5,6 +5,7 @@ import os
 import asyncio
 import edge_tts
 import csv
+import re  # Required for get_next_audio_index
 
 LANGUAGE_MAP = {
 "Afrikaans (South Africa)": "af-ZA",
@@ -171,19 +172,16 @@ class AnkiAudioApp:
         self.df = None
         self.voices_list = asyncio.run(edge_tts.list_voices())
 
-        # CSV Selection
         self.csv_label = tk.Label(root, text="Step 1: Select CSV File")
         self.csv_label.pack()
         self.csv_button = tk.Button(root, text="Browse CSV", command=self.load_csv)
         self.csv_button.pack()
 
-        # Column Selection
         self.column_label = tk.Label(root, text="Step 2: Select Column with Text")
         self.column_label.pack()
         self.column_menu = ttk.Combobox(root, state="readonly")
         self.column_menu.pack()
 
-        # Media Folder Selection
         self.media_label = tk.Label(root, text="Step 3: Select Anki media folder")
         self.media_label.pack()
         self.media_button = tk.Button(root, text="Browse Folder", command=self.select_media_folder)
@@ -192,7 +190,6 @@ class AnkiAudioApp:
         self.media_entry = tk.Entry(root, textvariable=self.media_path, width=50)
         self.media_entry.pack()
 
-        # Language and Voice Selection
         self.lang_label = tk.Label(root, text="Step 4: Select Language")
         self.lang_label.pack()
         self.languages = sorted(LANGUAGE_MAP.keys())
@@ -205,14 +202,12 @@ class AnkiAudioApp:
         self.voice_menu = ttk.Combobox(root, state="readonly")
         self.voice_menu.pack()
 
-        # Output File
         self.output_label = tk.Label(root, text="Step 6: Output File Name")
         self.output_label.pack()
         self.output_name = tk.Entry(root, width=40)
         self.output_name.insert(0, "anki_ready.csv")
         self.output_name.pack()
 
-        # Generate Button
         self.generate_button = tk.Button(root, text="Generate Audio", command=self.start_generation)
         self.generate_button.pack(pady=10)
 
@@ -261,15 +256,28 @@ class AnkiAudioApp:
         asyncio.run(self.generate_audio_files(column, media_folder, voice, output_path))
 
     async def generate_audio_files(self, column, media_folder, voice, output_path):
+        def get_next_audio_index(folder_path, prefix="audio_", extension=".mp3"):
+            max_index = -1
+            pattern = re.compile(rf"{re.escape(prefix)}(\d+){re.escape(extension)}$")
+            for fname in os.listdir(folder_path):
+                match = pattern.match(fname)
+                if match:
+                    index = int(match.group(1))
+                    max_index = max(max_index, index)
+            return max_index + 1
+
+        next_index = get_next_audio_index(media_folder)
         audio_filenames = []
-        for idx, row in self.df.iterrows():
+
+        for _, row in self.df.iterrows():
             text = str(row[column])
-            filename = f"audio_{idx}.mp3"
+            filename = f"audio_{next_index}.mp3"
             filepath = os.path.join(media_folder, filename)
 
             communicate = edge_tts.Communicate(text=text, voice=voice)
             await communicate.save(filepath)
             audio_filenames.append(f"[sound:{filename}]")
+            next_index += 1
 
         self.df["Audio"] = audio_filenames
         self.df.to_csv(output_path, index=False, sep=";", quoting=csv.QUOTE_NONE)
